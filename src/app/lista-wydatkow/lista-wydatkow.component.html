@@ -1,0 +1,33 @@
+<h2>Lista wydatków</h2>
+  <table class="table">
+    <tr>
+        <th>Kategoria</th>
+        <th>Data</th>
+        <th>Kwota</th>
+        <th>Opis</th>
+        <th>Litrow / km</th>
+    </tr>
+    <tr *ngFor="let wydatek of wydatki">
+    <td>{{wydatek.kategoria}}</td>
+    <td>{{wydatek.data | date:'dd.MM.yyyy'}}</td>
+    <td class="text-sm-right">{{wydatek.kwota | number:'1.2-2'}} zł</td>
+    <td>{{wydatek.opis}}</td>
+    <td>
+      <span  *ngIf="wydatek.kategoria == 'Tankowanie'">
+			<ng-container *ngIf="wydatek.ileLitrow && wydatek.ileKm; else elseif1">
+		  {{wydatek.ileLitrow | number: '1.1'}} l / {{wydatek.ileKm}} km
+		</ng-container>
+		<ng-template #elseif1>
+			<ng-container *ngIf="wydatek.ileLitrow && !wydatek.ileKm; else elseif2">
+				{{wydatek.ileLitrow | number: '1.1'}} l
+			</ng-container>
+		</ng-template>
+		<ng-template #elseif2>
+			<ng-container *ngIf="wydatek.ileKm && !wydatek.ileLitrow; else else1">
+				{{wydatek.ileKm}} km
+			</ng-container>
+		</ng-template>
+    </span>
+		</td>
+</tr>
+</table>
