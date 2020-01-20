@@ -8,12 +8,15 @@ import { WydatkiServiceService } from '../wydatki-service.service';
   styleUrls: ['./lista-wydatkow.component.css']
 })
 export class ListaWydatkowComponent implements OnInit {
-
+  
+  wydatki: Wydatek[];
   constructor(private wydatkiServiceService:WydatkiServiceService) { }
 
-  wydatki: Wydatek[];
     ngOnInit() {
     this.wydatki = this.wydatkiServiceService.getWydatki();
   }
-
+  usunWydatek(id: number) {
+    this.wydatkiServiceService.usunWydatek(id);
+  }
+  
 }

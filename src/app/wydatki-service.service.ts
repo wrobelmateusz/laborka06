@@ -24,4 +24,8 @@ export class WydatkiServiceService {
   dodajWydatek(nowyWydatek: Wydatek): void {
     this.wydatki.push(nowyWydatek);
   }
+  usunWydatek(id: number): void {
+    const ind = this.wydatki.findIndex(wydatek => wydatek.id === id);
+    this.wydatki.splice(ind, 1);
+  }
 }

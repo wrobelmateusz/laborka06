@@ -6,6 +6,7 @@
         <th>Kwota</th>
         <th>Opis</th>
         <th>Litrow / km</th>
+        <th></th>
     </tr>
     <tr *ngFor="let wydatek of wydatki">
     <td>{{wydatek.kategoria}}</td>
@@ -29,5 +30,8 @@
 		</ng-template>
     </span>
 		</td>
+    <td>
+        <button class="btn btn-danger" (click)="usunWydatek(wydatek.id)">Usuń</button>
+      </td>
 </tr>
 </table>
